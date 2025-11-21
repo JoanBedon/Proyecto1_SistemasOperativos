@@ -49,5 +49,6 @@ Se espera que cuando se finalice el programa se muestra las 20 transacciones en 
 | Cálculo    | simular_calculo()   | 
 
 
+<img width="1057" height="401" alt="image" src="https://github.com/user-attachments/assets/8b619b08-0a9d-47ad-918a-e6e9d01fad8b" />
 
 
