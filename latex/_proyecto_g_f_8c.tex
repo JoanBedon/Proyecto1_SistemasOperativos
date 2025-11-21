@@ -1,0 +1,191 @@
+\doxysection{Proyecto\+GF.\+c File Reference}
+\hypertarget{_proyecto_g_f_8c}{}\label{_proyecto_g_f_8c}\index{ProyectoGF.c@{ProyectoGF.c}}
+
+
+Sistema de procesamiento paralelo de transacciones usando hilos POSIX.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_proyecto_g_f_8c_af2c5c6ebd5ae00c1d9470834deadcddc}\label{_proyecto_g_f_8c_af2c5c6ebd5ae00c1d9470834deadcddc} 
+\#define {\bfseries NUM\+\_\+\+TRANSACCIONES}~20
+\item 
+\Hypertarget{_proyecto_g_f_8c_ac07422ff8cd6d473b961d30658414deb}\label{_proyecto_g_f_8c_ac07422ff8cd6d473b961d30658414deb} 
+\#define {\bfseries NUM\+\_\+\+HILOS}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_proyecto_g_f_8c_acad956957df8cef0289c8ac409509b2d}{simular\+\_\+consulta\+\_\+bd}} (int indice)
+\begin{DoxyCompactList}\small\item\em Simula una transacción de tipo consulta a base de datos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_proyecto_g_f_8c_ae9299907fb8cb14d61699fd8590ceb30}{simular\+\_\+procesar\+\_\+archivo}} (int indice)
+\begin{DoxyCompactList}\small\item\em Simula una transacción de tipo procesamiento de archivo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_proyecto_g_f_8c_ad59e858244389242c208ed8bf126d6fb}{simular\+\_\+calculo}} (int indice)
+\begin{DoxyCompactList}\small\item\em Simula una transacción de tipo cálculo complejo. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_proyecto_g_f_8c_afcf9b0863016ff71d61ba2da3cb02a5e}{procesar\+\_\+transacciones}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Función principal ejecutada por cada hilo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_proyecto_g_f_8c_a82b1bc005eefdb93901b504eddc0bd32}{inicializar\+\_\+transacciones}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa todas las transacciones del sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_proyecto_g_f_8c_a8f2a7bb32a468eb1973226c8c31acbb8}{mostrar\+\_\+transacciones}} ()
+\begin{DoxyCompactList}\small\item\em Muestra en consola la lista completa de transacciones generadas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_proyecto_g_f_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Función principal del programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_proyecto_g_f_8c_aef8955d69accfa91e056828710032111}\label{_proyecto_g_f_8c_aef8955d69accfa91e056828710032111} 
+int {\bfseries transaccion\+\_\+id} \mbox{[}NUM\+\_\+\+TRANSACCIONES\mbox{]}
+\item 
+\Hypertarget{_proyecto_g_f_8c_ac5c0ed0b461c5f4512b2f941587178a0}\label{_proyecto_g_f_8c_ac5c0ed0b461c5f4512b2f941587178a0} 
+int {\bfseries transaccion\+\_\+tipo} \mbox{[}NUM\+\_\+\+TRANSACCIONES\mbox{]}
+\item 
+\Hypertarget{_proyecto_g_f_8c_ad52457c60252ae4389427e7861f4ddba}\label{_proyecto_g_f_8c_ad52457c60252ae4389427e7861f4ddba} 
+int {\bfseries transaccion\+\_\+duracion\+\_\+ms} \mbox{[}NUM\+\_\+\+TRANSACCIONES\mbox{]}
+\item 
+\Hypertarget{_proyecto_g_f_8c_a521857262bc46d9ecfeb9c710edc225b}\label{_proyecto_g_f_8c_a521857262bc46d9ecfeb9c710edc225b} 
+double {\bfseries transaccion\+\_\+resultado} \mbox{[}NUM\+\_\+\+TRANSACCIONES\mbox{]}
+\item 
+\Hypertarget{_proyecto_g_f_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}\label{_proyecto_g_f_8c_a4acff8232e4aec9cd5c6dc200ac55ef3} 
+pthread\+\_\+mutex\+\_\+t {\bfseries mutex} = PTHREAD\+\_\+\+MUTEX\+\_\+\+INITIALIZER
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sistema de procesamiento paralelo de transacciones usando hilos POSIX. 
+
+Este programa simula 3 tipos de transacciones\+: consultas a BD, operaciones con archivos y cálculos complejos. ~\newline
+ Las transacciones se reparten entre varios hilos y se mide el tiempo total de ejecución en paralelo. 
+
+\label{doc-func-members}
+\Hypertarget{_proyecto_g_f_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_proyecto_g_f_8c_a82b1bc005eefdb93901b504eddc0bd32}\index{ProyectoGF.c@{ProyectoGF.c}!inicializar\_transacciones@{inicializar\_transacciones}}
+\index{inicializar\_transacciones@{inicializar\_transacciones}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{inicializar\_transacciones()}{inicializar\_transacciones()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_a82b1bc005eefdb93901b504eddc0bd32} 
+void inicializar\+\_\+transacciones (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa todas las transacciones del sistema. 
+
+Asigna\+:
+\begin{DoxyItemize}
+\item ID incremental (1..N)
+\item Tipo aleatorio (0=BD, 1=Archivo, 2=Cálculo)
+\item Duración aleatoria entre 100 y 500 ms
+\item Resultado inicial en 0
+\end{DoxyItemize}
+
+No recibe parámetros ni retorna valores, ya que opera sobre variables globales. \Hypertarget{_proyecto_g_f_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{ProyectoGF.c@{ProyectoGF.c}!main@{main}}
+\index{main@{main}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Función principal del programa. 
+
+Orquesta todo el sistema\+:
+\begin{DoxyItemize}
+\item Muestra información inicial sobre las unidades de tiempo utilizadas.
+\item Inicializa y muestra las transacciones.
+\item Crea los hilos de procesamiento.
+\item Mide el tiempo total usando clock() y CLOCKS\+\_\+\+PER\+\_\+\+SEC.
+\item Espera a que todos los hilos terminen.
+\item Muestra los resultados finales.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+0 si el programa finaliza correctamente. 
+\end{DoxyReturn}
+\Hypertarget{_proyecto_g_f_8c_a8f2a7bb32a468eb1973226c8c31acbb8}\index{ProyectoGF.c@{ProyectoGF.c}!mostrar\_transacciones@{mostrar\_transacciones}}
+\index{mostrar\_transacciones@{mostrar\_transacciones}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{mostrar\_transacciones()}{mostrar\_transacciones()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_a8f2a7bb32a468eb1973226c8c31acbb8} 
+void mostrar\+\_\+transacciones (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Muestra en consola la lista completa de transacciones generadas. 
+
+Imprime el ID, tipo textual y duración en milisegundos de cada transacción. Útil para verificar la correcta inicialización antes del procesamiento en paralelo. \Hypertarget{_proyecto_g_f_8c_afcf9b0863016ff71d61ba2da3cb02a5e}\index{ProyectoGF.c@{ProyectoGF.c}!procesar\_transacciones@{procesar\_transacciones}}
+\index{procesar\_transacciones@{procesar\_transacciones}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{procesar\_transacciones()}{procesar\_transacciones()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_afcf9b0863016ff71d61ba2da3cb02a5e} 
+void \texorpdfstring{$\ast$}{*} procesar\+\_\+transacciones (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Función principal ejecutada por cada hilo. 
+
+Cada hilo procesa un subconjunto de transacciones determinado según su ID. La función selecciona el tipo de operación correspondiente (BD, archivo o cálculo) y actualiza los resultados globales.
+
+Se usan mutex para evitar interferencia entre hilos al imprimir mensajes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Puntero genérico que contiene el ID del hilo (int\texorpdfstring{$\ast$}{*}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Siempre retorna NULL. 
+\end{DoxyReturn}
+\Hypertarget{_proyecto_g_f_8c_ad59e858244389242c208ed8bf126d6fb}\index{ProyectoGF.c@{ProyectoGF.c}!simular\_calculo@{simular\_calculo}}
+\index{simular\_calculo@{simular\_calculo}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{simular\_calculo()}{simular\_calculo()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_ad59e858244389242c208ed8bf126d6fb} 
+void simular\+\_\+calculo (\begin{DoxyParamCaption}\item[{int}]{indice}{}\end{DoxyParamCaption})}
+
+
+
+Simula una transacción de tipo cálculo complejo. 
+
+Realiza una espera equivalente a la duración configurada y ejecuta un bucle intensivo para generar carga real de CPU.
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice} & Índice de la transacción dentro de los arreglos globales. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_proyecto_g_f_8c_acad956957df8cef0289c8ac409509b2d}\index{ProyectoGF.c@{ProyectoGF.c}!simular\_consulta\_bd@{simular\_consulta\_bd}}
+\index{simular\_consulta\_bd@{simular\_consulta\_bd}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{simular\_consulta\_bd()}{simular\_consulta\_bd()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_acad956957df8cef0289c8ac409509b2d} 
+void simular\+\_\+consulta\+\_\+bd (\begin{DoxyParamCaption}\item[{int}]{indice}{}\end{DoxyParamCaption})}
+
+
+
+Simula una transacción de tipo consulta a base de datos. 
+
+Esta función representa una operación de acceso a BD usando un tiempo de espera configurable. Calcula un resultado simple basado en el ID real de la transacción.
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice} & Índice de la transacción dentro de los arreglos globales. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_proyecto_g_f_8c_ae9299907fb8cb14d61699fd8590ceb30}\index{ProyectoGF.c@{ProyectoGF.c}!simular\_procesar\_archivo@{simular\_procesar\_archivo}}
+\index{simular\_procesar\_archivo@{simular\_procesar\_archivo}!ProyectoGF.c@{ProyectoGF.c}}
+\doxysubsubsection{\texorpdfstring{simular\_procesar\_archivo()}{simular\_procesar\_archivo()}}
+{\footnotesize\ttfamily \label{_proyecto_g_f_8c_ae9299907fb8cb14d61699fd8590ceb30} 
+void simular\+\_\+procesar\+\_\+archivo (\begin{DoxyParamCaption}\item[{int}]{indice}{}\end{DoxyParamCaption})}
+
+
+
+Simula una transacción de tipo procesamiento de archivo. 
+
+Genera un retardo equivalente a su duración en milisegundos y calcula un resultado final basado en el ID de la transacción.
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice} & Índice de la transacción dentro de los arreglos globales. \\
+\hline
+\end{DoxyParams}
